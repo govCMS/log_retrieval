@@ -96,9 +96,9 @@ class LogsCommand extends Command
 // could use CHILD_FIRST if you so wish
 
         foreach ($iterator as $file) {
-            if(endsWith($file, $week_ago.".gz")) {
+            if($this->endsWith($file, $week_ago.".gz")) {
                 print "\nDeleting ".$file." as it matches ".$week_ago.".gz";
-
+                unlink($file);
             }
         }
 
