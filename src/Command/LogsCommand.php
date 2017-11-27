@@ -77,8 +77,8 @@ class LogsCommand extends Command
         print "\nFound ".sizeof($backup_locations)." log locations.\n";
         $one_day_ago = date("Ymd", time() - 60 * 60 * 24);
         foreach($backup_locations as $location) {
-            print "Retrieving logs from ".$location."\n\n";
-            //exec("rsync -e \"ssh -o StrictHostKeyChecking=no,UserKnownHostsFile=/dev/null\" ".$location." /tmp/ --include=\"*".$one_day_ago.".gz\" --include=\"*/\" --exclude='*'");
+            print "Retrieving logs from ".$location." for ".$one_day_ago."\n\n";
+            exec("rsync -e \"ssh -o StrictHostKeyChecking=no,UserKnownHostsFile=/dev/null\" ".$location." /tmp/pauls_logs/ --include=\"*".$one_day_ago.".gz\" --include=\"*/\" --exclude='*'");
         }
         //drush -y rsync @${DRUSHUSR}:/var/log/sites/govcms.01live/logs/ ${HOMEDIR}/logs/ --include="*$(date +%Y%m%d --date='1 day ago').gz" --include="*/" --exclude='*'
     }
