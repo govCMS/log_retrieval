@@ -29,6 +29,12 @@ class LogsCommand extends Command
        InputOption::VALUE_REQUIRED,
        'The Acquia Cloud API key'
      )
+      ->addOption(
+          'destination',
+          null,
+          InputOption::VALUE_REQUIRED,
+          'The Destination for log files'
+      )
      ->addOption(
       'simulate',
       's',
@@ -77,9 +83,8 @@ class LogsCommand extends Command
         print "\nFound ".sizeof($backup_locations)." log locations.\n";
         $one_day_ago = date("Ymd", time() - 60 * 60 * 24);
         foreach($backup_locations as $location) {
-            print "Retrieving logs from ".$location." for ".$one_day_ago."\n\n";
-            print "rsync -e \"ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null\" ".$location." /tmp/pauls_logs/ --include=\"*".$one_day_ago.".gz\" --include=\"*/\" --exclude='*'";
-            exec("rsync -e \"ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null\" ".$location." /tmp/pauls_logs/ --include=\"*".$one_day_ago.".gz\" --include=\"*/\" --exclude='*'");
+            print "Retrieving logs from ".$location."\n\n";
+            exec("rsync -az -e \"ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null\" ".$location." ".$input->getOption('destination')." --include=\"*".$one_day_ago.".gz\" --include=\"*/\" --exclude='*'");
         }
     }
 }
