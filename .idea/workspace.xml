@@ -17,8 +17,8 @@
       <file leaf-file-name="LogsCommand.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Command/LogsCommand.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="100" column="30" lean-forward="false" selection-start-line="100" selection-start-column="30" selection-end-line="100" selection-end-column="30" />
+            <state relative-caret-position="276">
+              <caret line="91" column="59" lean-forward="true" selection-start-line="91" selection-start-column="59" selection-end-line="91" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -242,7 +242,7 @@
       <option name="presentableId" value="Default" />
       <updated>1511738240120</updated>
       <workItem from="1511738241767" duration="374000" />
-      <workItem from="1511738670478" duration="4570000" />
+      <workItem from="1511738670478" duration="4634000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1511738385045</created>
@@ -262,7 +262,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4944000" />
+    <option name="totallyTimeSpent" value="5008000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1066" extended-state="6" />
@@ -378,8 +378,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Command/LogsCommand.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="100" column="30" lean-forward="false" selection-start-line="100" selection-start-column="30" selection-end-line="100" selection-end-column="30" />
+        <state relative-caret-position="276">
+          <caret line="91" column="59" lean-forward="true" selection-start-line="91" selection-start-column="59" selection-end-line="91" selection-end-column="59" />
           <folding />
         </state>
       </provider>
