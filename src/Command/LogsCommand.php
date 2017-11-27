@@ -86,6 +86,30 @@ class LogsCommand extends Command
             print "Retrieving logs from ".$location."\n\n";
             exec("rsync -az -e \"ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null\" ".$location." ".$input->getOption('destination')." --include=\"*".$one_day_ago.".gz\" --include=\"*/\" --exclude='*'");
         }
+
+        print "\nDeleting older files";
+
+        $week_ago = date("Ymd", time() - 60 * 60 * 24 * 2);
+
+        $dir_iterator = new \RecursiveDirectoryIterator($input->getOption('destination'));
+        $iterator = new \RecursiveIteratorIterator($dir_iterator, \RecursiveIteratorIterator::SELF_FIRST);
+// could use CHILD_FIRST if you so wish
+
+        foreach ($iterator as $file) {
+            if(endsWith($file, $week_ago.".gz")) {
+                print "\nDeleting ".$file." as it matches ".$week_ago.".gz";
+
+            }
+        }
+
+
+    }
+
+    function endsWith($haystack, $needle) {
+        $length = strlen($needle);
+
+        return $length === 0 ||
+            (substr($haystack, -$length) === $needle);
     }
 }
 
