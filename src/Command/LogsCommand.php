@@ -89,7 +89,7 @@ class LogsCommand extends Command
 
         print "\nDeleting older files";
 
-        $week_ago = date("Ymd", time() - 60 * 60 * 24 * 7);
+        $week_ago = date("Ymd", time() - 60 * 60 * 24 * 35);
 
         $dir_iterator = new \RecursiveDirectoryIterator($input->getOption('destination'));
         $iterator = new \RecursiveIteratorIterator($dir_iterator, \RecursiveIteratorIterator::SELF_FIRST);
