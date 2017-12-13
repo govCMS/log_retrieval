@@ -93,7 +93,6 @@ class LogsCommand extends Command
 
         $dir_iterator = new \RecursiveDirectoryIterator($input->getOption('destination'));
         $iterator = new \RecursiveIteratorIterator($dir_iterator, \RecursiveIteratorIterator::SELF_FIRST);
-// could use CHILD_FIRST if you so wish
 
         foreach ($iterator as $file) {
             if($this->endsWith($file, $week_ago.".gz")) {
