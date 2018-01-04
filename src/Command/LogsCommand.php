@@ -83,7 +83,9 @@ class LogsCommand extends Command
         $one_day_ago = date("Ymd", time() - 60 * 60 * 24);
         foreach($backup_locations as $location) {
             print "Retrieving logs from ".$location."\n\n";
-            exec("rsync -az -e \"ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null\" ".$location." ".$input->getOption('destination')."/".$sitegroup."/ --include=\"*".$one_day_ago.".gz\" --include=\"*/\" --exclude='*'");
+            $arr = explode(".", $location, 2);
+            $this_sitegroup = $arr[0];
+            exec("rsync -az -e \"ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null\" ".$location." ".$input->getOption('destination')."/".$this_sitegroup."/ --include=\"*".$one_day_ago.".gz\" --include=\"*/\" --exclude='*'");
         }
 
         print "\nDeleting older files";
