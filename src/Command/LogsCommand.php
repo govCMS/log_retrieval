@@ -51,12 +51,10 @@ class LogsCommand extends Command
         ]);
 
         $sites = json_decode($client->request('GET', 'sites.json')->getBody());
-        var_dump($sites);
-
         $sites = array_filter($sites, function ($site) {
           return strpos($site, 'enterprise-g1:govcms') === 0;
         });
-
+        var_dump($sites);
         $backup_locations = [];
 
         foreach ($sites as $site) {
