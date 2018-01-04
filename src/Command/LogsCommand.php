@@ -51,6 +51,8 @@ class LogsCommand extends Command
         ]);
 
         $sites = json_decode($client->request('GET', 'sites.json')->getBody());
+        var_dump($sites);
+
         $sites = array_filter($sites, function ($site) {
           return strpos($site, 'enterprise-g1:govcms') === 0;
         });
