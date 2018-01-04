@@ -18,8 +18,8 @@
       <file leaf-file-name="LogsCommand.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Command/LogsCommand.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="62" column="10" lean-forward="false" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="10" />
+            <state relative-caret-position="406">
+              <caret line="71" column="31" lean-forward="false" selection-start-line="71" selection-start-column="31" selection-end-line="71" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -452,8 +452,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Command/LogsCommand.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="62" column="10" lean-forward="false" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="10" />
+        <state relative-caret-position="406">
+          <caret line="71" column="31" lean-forward="false" selection-start-line="71" selection-start-column="31" selection-end-line="71" selection-end-column="31" />
           <folding />
         </state>
       </provider>

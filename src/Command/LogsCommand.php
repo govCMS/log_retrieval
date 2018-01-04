@@ -61,15 +61,15 @@ class LogsCommand extends Command
           $endpoint = implode('/', ['sites', $site, 'envs.json']);
           $envs = json_decode($client->request('GET', $endpoint)->getBody());
 
-          var_dump($envs);
           $envs = array_filter($envs, function ($env) {
-            return strpos($env->name, 'live') !== FALSE;
+            return strpos($env->name, 'live') !== FALSE || strpos($env->name, 'prod') !== FALSE;
           });
 
           foreach ($envs as $env) {
             $endpoint = implode('/', ['sites', $site, 'envs', $env->name, 'servers.json']);
             $servers = json_decode($client->request('GET', $endpoint)->getBody());
 
+            var_dump($servers);
             $servers = array_filter($servers, function ($server) {
               return !empty($server->services->web);
             });
