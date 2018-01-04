@@ -51,10 +51,9 @@ class LogsCommand extends Command
         ]);
 
         $sites = json_decode($client->request('GET', 'sites.json')->getBody());
-        $sites = array_filter($sites, function ($site) {
-          return strpos($site, 'enterprise-g1:govcms') === 0;
-        });
-        var_dump($sites);
+        //$sites = array_filter($sites, function ($site) {
+        //  return strpos($site, 'enterprise-g1:govcms') === 0;
+        //});
         $backup_locations = [];
 
         foreach ($sites as $site) {
@@ -65,6 +64,7 @@ class LogsCommand extends Command
           $envs = array_filter($envs, function ($env) {
             return strpos($env->name, 'live') !== FALSE;
           });
+          var_dump($envs);
 
           foreach ($envs as $env) {
             $endpoint = implode('/', ['sites', $site, 'envs', $env->name, 'servers.json']);
