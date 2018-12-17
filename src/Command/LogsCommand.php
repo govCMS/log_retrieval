@@ -51,12 +51,18 @@ class LogsCommand extends Command
         ]);
 
         $sites = json_decode($client->request('GET', 'sites.json')->getBody());
-        //$sites = array_filter($sites, function ($site) {
-        //  return strpos($site, 'enterprise-g1:govcms') === 0;
-        //});
+        $sites = array_filter($sites, function ($site) {
+	  if(strpos($site, 'enterprise-g1') === false) {
+	  	return true;
+	  } else {
+		return false;
+	  }
+        });
+	var_dump($sites);
         $backup_locations = [];
 
         foreach ($sites as $site) {
+	  try {
           list($stage, $sitegroup) = explode(':', $site);
           $endpoint = implode('/', ['sites', $site, 'envs.json']);
           $envs = json_decode($client->request('GET', $endpoint)->getBody());
@@ -77,6 +83,9 @@ class LogsCommand extends Command
               $backup_locations[] = $sitegroup . '.' . $env->name . '@' . $server->fqdn . ':' . '/var/log/sites/' . $sitegroup . '.' . $env->name . '/logs/' . $server->name;
             }
           }
+ 	  } catch (Exception $e) {
+	   	print "\nException ".$e;
+	  }
         }
 
         print "\nFound ".sizeof($backup_locations)." log locations.\n";
